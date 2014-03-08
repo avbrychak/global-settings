@@ -33,6 +33,7 @@ group :doc do
 end
 
 gem 'rspec-rails'
+gem "acts_as_singleton"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
