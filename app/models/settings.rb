@@ -21,12 +21,13 @@ class Settings < ActiveRecord::Base
   end
 
   def self.data_set key, value
-    instance.data[key] = value
-    instance.save
-    data_get key
-  end
-
-  def self.data
-    instance
+    if [Numeric, String, TrueClass, FalseClass].any? { |klass| value.is_a? klass}
+      settings = instance
+      settings.data[key] = value
+      settings.save
+      data_get key
+    else
+      nil
+    end
   end
 end
